@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://b83pqgmaa2m7j"]
+
+[ext_resource type="Texture2D" uid="uid://ccceyo7xutntp" path="res://addons/devblocks/textures/green/texture_08.png" id="1_pcwyq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_piew4"]
+size = Vector3(3.44116, 0.953603, 6.16869)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h3oqy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lbwqc"]
+albedo_texture = ExtResource("1_pcwyq")
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.54
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_g514e"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = false
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/sync = true
+properties/1/watch = false
+
+[node name="RigidBody3D2" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, -0.0494948, 0.998774, 0, -0.998774, -0.0494948, 2.30623, 3.31823, 0.590272)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00726223, 0.0201864, 0.380975)
+shape = SubResource("BoxShape3D_piew4")
+
+[node name="CollisionShape3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.48483, 0, 0, 0, 0.962177, 0, 0, 0, 6.1588, 0, 0.0170219, 0.391604)
+mesh = SubResource("BoxMesh_h3oqy")
+skeleton = NodePath("../../RigidBody3D2")
+surface_material_override/0 = SubResource("StandardMaterial3D_lbwqc")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_g514e")

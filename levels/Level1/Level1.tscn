@@ -1,0 +1,124 @@
+[gd_scene load_steps=12 format=3 uid="uid://dx8cxjpayujno"]
+
+[ext_resource type="Script" path="res://levels/Lobby/Lobby.gd" id="1_pv7j0"]
+[ext_resource type="PackedScene" uid="uid://dj26sacnhty4r" path="res://addons/devblocks/blocks/basic_block.tscn" id="2_13lmf"]
+[ext_resource type="PackedScene" uid="uid://b83pqgmaa2m7j" path="res://levels/Level1/rigid_body_3d.tscn" id="3_nx0af"]
+[ext_resource type="Texture2D" uid="uid://ccceyo7xutntp" path="res://addons/devblocks/textures/green/texture_08.png" id="4_darwg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6g5uc"]
+
+[sub_resource type="Sky" id="Sky_ivwug"]
+sky_material = SubResource("ProceduralSkyMaterial_6g5uc")
+
+[sub_resource type="Environment" id="Environment_l5pxq"]
+background_mode = 2
+background_color = Color(0.2139, 0.570975, 0.69, 1)
+sky = SubResource("Sky_ivwug")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_piew4"]
+size = Vector3(3.44116, 0.953603, 6.16869)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h3oqy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lbwqc"]
+albedo_texture = ExtResource("4_darwg")
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.54
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_g514e"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = false
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/sync = true
+properties/1/watch = false
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_pv7j0")
+
+[node name="DirectionalLight3d" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.966349, 0.250904, -0.056709, 0.182362, -0.512743, 0.838951, 0.181419, -0.821061, -0.541244, -0.00693703, 59.5145, -109.348)
+light_color = Color(1, 0.960784, 0.878431, 1)
+light_energy = 1.879
+light_indirect_energy = 0.884
+light_volumetric_fog_energy = 3.192
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_l5pxq")
+
+[node name="Blocks" type="Node3D" parent="."]
+
+[node name="BasicBlock4" parent="Blocks" instance=ExtResource("2_13lmf")]
+transform = Transform3D(9.10803, 0, 0, 0, 0.973083, -2.07412, 0, 0.230457, 8.75775, 16.1632, 3.01613, -6.06431)
+block_color_group = 1
+block_style = 2
+
+[node name="BasicBlock3" parent="Blocks" instance=ExtResource("2_13lmf")]
+transform = Transform3D(-0.0502951, 0, 29.9905, 0, 5, 0, -1.99937, 0, -0.754427, 12.0086, 2.95161, -12.7509)
+block_color_group = 3
+block_style = 2
+
+[node name="BasicBlock" parent="Blocks" instance=ExtResource("2_13lmf")]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0)
+
+[node name="BasicBlock2" parent="Blocks" instance=ExtResource("2_13lmf")]
+transform = Transform3D(6.981, 0, 0, 0, 1, 0, 0, 0, 4.093, 5.58332, 1.01395, -22.4728)
+block_color_group = 1
+block_style = 2
+
+[node name="BasicBlock5" parent="Blocks" instance=ExtResource("2_13lmf")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, -13.8285, 2.84246, -1.36987)
+block_color_group = 1
+block_style = 2
+
+[node name="BasicBlock7" parent="Blocks" instance=ExtResource("2_13lmf")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, -19.5604, 3.75709, -1.66806)
+block_color_group = 1
+block_style = 2
+
+[node name="BasicBlock9" parent="Blocks" instance=ExtResource("2_13lmf")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, -19.3998, 4.99727, -6.99756)
+block_color_group = 1
+block_style = 2
+
+[node name="BasicBlock10" parent="Blocks" instance=ExtResource("2_13lmf")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 14.3898, 1.1854, 1.73929)
+block_color_group = 1
+block_style = 2
+
+[node name="BasicBlock11" parent="Blocks" instance=ExtResource("2_13lmf")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, -13.3712, 6.30232, -7.77279)
+block_color_group = 1
+block_style = 2
+
+[node name="BasicBlock6" parent="Blocks" instance=ExtResource("2_13lmf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0841, 0.977712, -2.59486)
+
+[node name="BasicBlock8" parent="Blocks" instance=ExtResource("2_13lmf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0841, 2.02877, -1.66305)
+
+[node name="BasicBlock12" parent="Blocks" instance=ExtResource("2_13lmf")]
+transform = Transform3D(0.999985, -0.00541049, 0, 0.00541049, 0.999985, 0, 0, 0, 1, -10.0841, 0.999874, -0.607371)
+
+[node name="RigidBody3D2" parent="Blocks" instance=ExtResource("3_nx0af")]
+transform = Transform3D(0.00951901, 0.00763664, 0.999925, 0.0252061, -0.999655, 0.00739462, 0.999637, 0.0251339, -0.00970823, -12.3012, 8.44586, -7.68696)
+
+[node name="RigidBody3D3" type="RigidBody3D" parent="Blocks"]
+transform = Transform3D(0.0506975, -0.0883631, -0.994797, 0, -0.996078, 0.0884769, -0.998714, -0.00448556, -0.0504986, -4.95594, 2.08398, -9.93136)
+mass = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/RigidBody3D3"]
+transform = Transform3D(0.349237, 9.31323e-10, 9.31323e-10, 0, 1.39463, 1.7244e-08, -1.86265e-09, -5.2416e-08, 0.256381, -0.0697193, -0.0336418, -0.0102394)
+shape = SubResource("BoxShape3D_piew4")
+
+[node name="CollisionShape3D2" type="MeshInstance3D" parent="Blocks/RigidBody3D3"]
+transform = Transform3D(1.21703, 1.39698e-09, -1.2666e-07, 4.65661e-10, 1.34188, 1.57917e-07, 3.72529e-09, 8.81846e-09, 1.579, -0.0671711, -0.0390177, -0.0062356)
+mesh = SubResource("BoxMesh_h3oqy")
+skeleton = NodePath("../../RigidBody3D2")
+surface_material_override/0 = SubResource("StandardMaterial3D_lbwqc")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Blocks/RigidBody3D3"]
+replication_config = SubResource("SceneReplicationConfig_g514e")

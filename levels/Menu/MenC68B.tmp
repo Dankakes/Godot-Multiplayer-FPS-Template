@@ -1,0 +1,297 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqu1qkgnxm3dx"]
+
+[ext_resource type="Script" path="res://levels/Menu/Menu.gd" id="1_rxuka"]
+[ext_resource type="Texture2D" uid="uid://drx5sxhyg8sjy" path="res://assets/media/photo/MainMenu.jpg" id="2_bsbwp"]
+[ext_resource type="Theme" uid="uid://dsejfmreade8h" path="res://assets/media/themes/menutheme.tres" id="3_ll7y0"]
+[ext_resource type="Script" path="res://levels/Menu/Settings Menu Container.gd" id="4_uk423"]
+
+[sub_resource type="SystemFont" id="SystemFont_n78g3"]
+font_names = PackedStringArray("OpenDyslexic3")
+
+[sub_resource type="LabelSettings" id="LabelSettings_62wrm"]
+font = SubResource("SystemFont_n78g3")
+font_size = 90
+font_color = Color(0.211765, 0.211765, 0.211765, 1)
+
+[node name="Menu" type="Node3D"]
+script = ExtResource("1_rxuka")
+
+[node name="MenuCanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" type="Sprite2D" parent="MenuCanvasLayer"]
+position = Vector2(960, 540)
+scale = Vector2(0.951333, 0.877805)
+texture = ExtResource("2_bsbwp")
+
+[node name="Main Menu Container" type="Control" parent="MenuCanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Main Menu Label" type="Label" parent="MenuCanvasLayer/Main Menu Container"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.327
+anchor_right = 0.682
+anchor_bottom = 0.193
+offset_left = -37.84
+offset_right = 3.55994
+offset_bottom = 81.56
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Haunt"
+label_settings = SubResource("LabelSettings_62wrm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuCanvasLayer/Main Menu Container"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 572.0
+offset_top = -138.0
+offset_right = -572.0
+offset_bottom = 138.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuCanvasLayer/Main Menu Container/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="Practice" type="Button" parent="MenuCanvasLayer/Main Menu Container/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_ll7y0")
+text = "Practice"
+
+[node name="Multiplayer" type="Button" parent="MenuCanvasLayer/Main Menu Container/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_ll7y0")
+text = " Multiplayer"
+
+[node name="Settings" type="Button" parent="MenuCanvasLayer/Main Menu Container/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_ll7y0")
+text = "Settings"
+
+[node name="Quit Button" type="Button" parent="MenuCanvasLayer/Main Menu Container/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_ll7y0")
+text = "Quit"
+
+[node name="Settings Menu Container" type="Control" parent="MenuCanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_uk423")
+
+[node name="Settings Menu Label" type="Label" parent="MenuCanvasLayer/Settings Menu Container"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -566.0
+offset_top = 50.0
+offset_right = 566.0
+offset_bottom = 233.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "Settings"
+label_settings = SubResource("LabelSettings_62wrm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TabBar" type="TabBar" parent="MenuCanvasLayer/Settings Menu Container"]
+layout_mode = 2
+offset_left = 136.0
+offset_top = 255.0
+offset_right = 1016.0
+offset_bottom = 332.0
+theme = ExtResource("3_ll7y0")
+clip_tabs = false
+scrolling_enabled = false
+tab_count = 4
+tab_0/title = "General"
+tab_1/title = "Multiplayer"
+tab_2/title = "Video"
+tab_3/title = "Sound"
+
+[node name="TabBodies" type="MarginContainer" parent="MenuCanvasLayer/Settings Menu Container"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 126.0
+offset_top = -213.0
+offset_right = -126.0
+offset_bottom = 213.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="General Settings" type="VBoxContainer" parent="MenuCanvasLayer/Settings Menu Container/TabBodies"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="FullScreenDropdown" type="OptionButton" parent="MenuCanvasLayer/Settings Menu Container/TabBodies/General Settings"]
+layout_mode = 2
+theme = ExtResource("3_ll7y0")
+alignment = 1
+icon_alignment = 1
+item_count = 2
+selected = 0
+popup/item_0/text = "Full Screen"
+popup/item_0/id = 0
+popup/item_1/text = "Windowed"
+popup/item_1/id = 1
+
+[node name="ResolutionDropdown" type="OptionButton" parent="MenuCanvasLayer/Settings Menu Container/TabBodies/General Settings"]
+layout_mode = 2
+theme = ExtResource("3_ll7y0")
+alignment = 1
+icon_alignment = 1
+item_count = 1
+selected = 0
+popup/item_0/text = ""
+popup/item_0/id = 0
+
+[node name="Multiplayer Settings" type="VBoxContainer" parent="MenuCanvasLayer/Settings Menu Container/TabBodies"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="FullScreenDropdown" type="OptionButton" parent="MenuCanvasLayer/Settings Menu Container/TabBodies/Multiplayer Settings"]
+layout_mode = 2
+theme = ExtResource("3_ll7y0")
+alignment = 1
+icon_alignment = 1
+item_count = 2
+selected = 0
+popup/item_0/text = "Full Screen"
+popup/item_0/id = 0
+popup/item_1/text = "Windowed"
+popup/item_1/id = 1
+
+[node name="ResolutionDropdown" type="OptionButton" parent="MenuCanvasLayer/Settings Menu Container/TabBodies/Multiplayer Settings"]
+layout_mode = 2
+theme = ExtResource("3_ll7y0")
+alignment = 1
+icon_alignment = 1
+item_count = 1
+selected = 0
+popup/item_0/text = ""
+popup/item_0/id = 0
+
+[node name="Video Settings" type="VBoxContainer" parent="MenuCanvasLayer/Settings Menu Container/TabBodies"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="FullScreenDropdown" type="OptionButton" parent="MenuCanvasLayer/Settings Menu Container/TabBodies/Video Settings"]
+layout_mode = 2
+theme = ExtResource("3_ll7y0")
+alignment = 1
+icon_alignment = 1
+item_count = 2
+selected = 0
+popup/item_0/text = "Full Screen"
+popup/item_0/id = 0
+popup/item_1/text = "Windowed"
+popup/item_1/id = 1
+
+[node name="ResolutionDropdown" type="OptionButton" parent="MenuCanvasLayer/Settings Menu Container/TabBodies/Video Settings"]
+layout_mode = 2
+theme = ExtResource("3_ll7y0")
+alignment = 1
+icon_alignment = 1
+item_count = 1
+selected = 0
+popup/item_0/text = ""
+popup/item_0/id = 0
+
+[node name="VSync" type="Button" parent="MenuCanvasLayer/Settings Menu Container/TabBodies/Video Settings"]
+custom_minimum_size = Vector2(853, 0)
+layout_mode = 2
+theme = ExtResource("3_ll7y0")
+toggle_mode = true
+button_mask = 0
+text = "V-Sync"
+
+[node name="Sound Settings" type="VBoxContainer" parent="MenuCanvasLayer/Settings Menu Container/TabBodies"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="FullScreenDropdown" type="OptionButton" parent="MenuCanvasLayer/Settings Menu Container/TabBodies/Sound Settings"]
+layout_mode = 2
+theme = ExtResource("3_ll7y0")
+alignment = 1
+icon_alignment = 1
+item_count = 2
+selected = 0
+popup/item_0/text = "Full Screen"
+popup/item_0/id = 0
+popup/item_1/text = "Windowed"
+popup/item_1/id = 1
+
+[node name="ResolutionDropdown" type="OptionButton" parent="MenuCanvasLayer/Settings Menu Container/TabBodies/Sound Settings"]
+layout_mode = 2
+theme = ExtResource("3_ll7y0")
+alignment = 1
+icon_alignment = 1
+item_count = 1
+selected = 0
+popup/item_0/text = ""
+popup/item_0/id = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuCanvasLayer/Settings Menu Container"]
+layout_direction = 3
+layout_mode = 2
+offset_left = 136.0
+offset_top = 487.0
+offset_right = 1016.0
+offset_bottom = 527.0
+
+[node name="Back" type="Button" parent="MenuCanvasLayer/Settings Menu Container/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("3_ll7y0")
+text = "Back"
+
+[node name="Save" type="Button" parent="MenuCanvasLayer/Settings Menu Container/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("3_ll7y0")
+text = "Save"
+
+[connection signal="pressed" from="MenuCanvasLayer/Main Menu Container/MarginContainer/VBoxContainer/Practice" to="." method="_on_practice_pressed"]
+[connection signal="pressed" from="MenuCanvasLayer/Main Menu Container/MarginContainer/VBoxContainer/Multiplayer" to="." method="_on_multiplayer_pressed"]
+[connection signal="pressed" from="MenuCanvasLayer/Main Menu Container/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MenuCanvasLayer/Main Menu Container/MarginContainer/VBoxContainer/Quit Button" to="." method="_on_quit_button_pressed"]
+[connection signal="visibility_changed" from="MenuCanvasLayer/Settings Menu Container" to="MenuCanvasLayer/Settings Menu Container" method="_on_visibility_changed"]
+[connection signal="tab_changed" from="MenuCanvasLayer/Settings Menu Container/TabBar" to="MenuCanvasLayer/Settings Menu Container" method="_on_tab_bar_tab_changed"]
+[connection signal="pressed" from="MenuCanvasLayer/Settings Menu Container/HBoxContainer/Back" to="MenuCanvasLayer/Settings Menu Container" method="_on_back_pressed"]
+[connection signal="pressed" from="MenuCanvasLayer/Settings Menu Container/HBoxContainer/Save" to="MenuCanvasLayer/Settings Menu Container" method="_on_save_pressed"]

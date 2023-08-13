@@ -1,0 +1,201 @@
+[gd_scene load_steps=6 format=3 uid="uid://bj28rvjdxj38x"]
+
+[ext_resource type="Script" path="res://levels/Main/Main.gd" id="1_gsfat"]
+[ext_resource type="Texture2D" uid="uid://drx5sxhyg8sjy" path="res://assets/media/photo/MainMenu.jpg" id="2_b5p7b"]
+[ext_resource type="Theme" uid="uid://dsejfmreade8h" path="res://assets/media/themes/menutheme.tres" id="3_2cu8u"]
+
+[sub_resource type="SystemFont" id="SystemFont_n78g3"]
+font_names = PackedStringArray("OpenDyslexic3")
+
+[sub_resource type="LabelSettings" id="LabelSettings_62wrm"]
+font = SubResource("SystemFont_n78g3")
+font_size = 45
+font_color = Color(0.211765, 0.211765, 0.211765, 1)
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_gsfat")
+
+[node name="Level Spawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://levels/Lobby/Lobby.tscn", "res://levels/City/City.tscn")
+spawn_path = NodePath("..")
+spawn_limit = 1
+
+[node name="Player Spawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://assets/players/player.tscn", "res://assets/players/monster.tscn", "res://assets/players/spectator.tscn")
+spawn_path = NodePath("..")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Main Menu Container" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenu" type="Sprite2D" parent="CanvasLayer/Main Menu Container"]
+position = Vector2(575, 307)
+scale = Vector2(0.667581, 0.667581)
+texture = ExtResource("2_b5p7b")
+
+[node name="Main Menu Label" type="Label" parent="CanvasLayer/Main Menu Container"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -566.0
+offset_right = 566.0
+offset_bottom = 94.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "Haunt"
+label_settings = SubResource("LabelSettings_62wrm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Main Menu Container"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 327.0
+offset_top = -87.0
+offset_right = -327.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Main Menu Container/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Host Button" type="Button" parent="CanvasLayer/Main Menu Container/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_2cu8u")
+text = "Host"
+
+[node name="Join Button" type="Button" parent="CanvasLayer/Main Menu Container/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_2cu8u")
+text = "Join"
+
+[node name="Room Code" type="LineEdit" parent="CanvasLayer/Main Menu Container/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_2cu8u")
+placeholder_text = "Room Code  (default: localhost)"
+alignment = 1
+
+[node name="Quit Button" type="Button" parent="CanvasLayer/Main Menu Container/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_2cu8u")
+text = "Quit"
+
+[node name="Pause Menu" type="PanelContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 327.0
+offset_top = 240.0
+offset_right = -327.0
+offset_bottom = -239.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Pause Menu"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause Menu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Pause Menu Label" type="Label" parent="CanvasLayer/Pause Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Pause Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player Button" type="Button" parent="CanvasLayer/Pause Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Player"
+
+[node name="Monster Button" type="Button" parent="CanvasLayer/Pause Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Monster"
+
+[node name="Spectate Button" type="Button" parent="CanvasLayer/Pause Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Spectate"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Pause Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Switch Level" type="Button" parent="CanvasLayer/Pause Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Switch Level"
+
+[node name="Resume Button" type="Button" parent="CanvasLayer/Pause Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="Quit Button" type="Button" parent="CanvasLayer/Pause Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="ChatBox Container" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -162.0
+offset_right = -734.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Enter Text" type="TextEdit" parent="CanvasLayer/ChatBox Container"]
+layout_mode = 0
+offset_top = 125.0
+offset_right = 418.0
+offset_bottom = 158.0
+placeholder_text = "enter message (enter to send)"
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+wrap_mode = 1
+draw_spaces = true
+
+[node name="Chatbox" type="RichTextLabel" parent="CanvasLayer/ChatBox Container"]
+layout_mode = 0
+offset_right = 418.0
+offset_bottom = 129.0
+fit_content = true
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="pressed" from="CanvasLayer/Main Menu Container/MarginContainer/VBoxContainer/Host Button" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main Menu Container/MarginContainer/VBoxContainer/Join Button" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main Menu Container/MarginContainer/VBoxContainer/Quit Button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause Menu/MarginContainer/VBoxContainer/Player Button" to="." method="_on_player_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause Menu/MarginContainer/VBoxContainer/Monster Button" to="." method="_on_monster_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause Menu/MarginContainer/VBoxContainer/Spectate Button" to="." method="_on_spectate_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause Menu/MarginContainer/VBoxContainer/Switch Level" to="." method="_on_switch_level_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause Menu/MarginContainer/VBoxContainer/Resume Button" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause Menu/MarginContainer/VBoxContainer/Quit Button" to="." method="_on_quit_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
